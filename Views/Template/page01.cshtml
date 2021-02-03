@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "page001";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="https://cdn.layerjs.org/libs/layerjs/layerjs-0.5.2.css" type="text/css" rel="stylesheet">
+    <link href="~/Content/TemplateLayOut.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="page_style" id="my_flip_book">
+        <div class="double_page_bleed">
+            <div class="double_page_cont">
+                <div class="img-content-double">            
+                        <div class="content">
+                            <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="section_text">
+                                <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="title_dimension_p1">
+                                <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                    <textarea id="title" name="title" rows="2" cols="50" class="title_input_page01" maxlength="15" placeholder="TITOLO"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="sub_title_dimension_p2">
+                                <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                    <textarea id="sub_title" name="sub_title" rows="4" cols="50" class="sub_title_input_p1 sub_title_input"  placeholder="Sub Title"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                   
+                    </div>
+                <div class="img-content-double">
+                    <div class="content">
+                        <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="section_image">
+                            <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+
+                            </div>
+                        </div>
+                    </div>
+                        <div class="content">
+                            <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="section_image">
+                                <div lj-type="frame" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right" style="width: 100%">
+                                    <div class="file-upload center">
+                                        <div class="image-upload-wrap">
+                                            <input class="file-upload-input" type='file' onchange="readURLS(this);" accept="image/*" />
+                                            <div class="drag-text">
+                                                <h3>Drag and drop a file or select add Image</h3>
+                                            </div>
+                                        </div>
+                                        <div class="file-upload-content">
+                                            <img class="file-upload-image img_cnt" src="#" alt="your image" style="width: 100%;"/>
+                                            <div class="image-title-wrap">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="content">
+                        <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="pg1_dimension">
+                            <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                <textarea id="sub_title" name="sub_title" rows="20" cols="50" class="paragraph pg1" placeholder="Enter text here..."></textarea>
+                            </div>
+                        </div>
+                        <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="image_2">
+                            <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                <div class="file-upload center">
+                                    <div class="image-uploader-wrap">
+                                        <input class="file-uploader-input" type='file' onchange="readURL(this);" accept="image/*" />
+                                        <div class="drag-text">
+                                            <h3>Drag and drop a file or select add Image</h3>
+                                        </div>
+                                    </div>
+                                    <div class="file-uploader-content">
+                                        <img class="file-uploader-image image_2" src="#" alt="your image" style="width: 100%;" />
+                                        <div class="image-title-wrap">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="pg2_dimension">
+                            <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                <textarea id="sub_title" name="sub_title" rows="20" cols="50" class="paragraph pg2"  placeholder="Enter text here..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="pg3_dimension">
+                            <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                <textarea id="sub_title" name="sub_title" rows="20" cols="50" class="paragraph pg3" placeholder="Enter text here..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    </div>
+                </div>
+        </div>
+    </div>
+    @section scripts {
+        <script>
+
+           function readURLS(input) {
+               if (input.files && input.files[0]) {
+
+                   var reader = new FileReader();
+
+                   reader.onload = function (e) {
+                       $('.image-upload-wrap').hide();
+
+                       $('.file-upload-image').attr('src', e.target.result);
+                       $('.file-upload-content').show();
+
+                       $('.image-title').html(input.files[0].name);
+                   };
+
+                   reader.readAsDataURL(input.files[0]);
+
+               }
+           }
+           function readURL(item) {
+               if (item.files && item.files[0]) {
+
+                   var reader = new FileReader();
+
+                   reader.onload = function (e) {
+                       $('.image-uploader-wrap').hide();
+
+                       $('.file-uploader-image').attr('src', e.target.result);
+                       $('.file-uploader-content').show();
+
+                       $('.image-title').html(item.files[0].name);
+                   };
+
+                   reader.readAsDataURL(item.files[0]);
+
+               }
+           }
+        </script>
+    }
+</body>
+</html>

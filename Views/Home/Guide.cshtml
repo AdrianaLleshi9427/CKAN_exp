@@ -1,0 +1,56 @@
+﻿@model TravelAgency.Models.Home.HomeIndexViewModel
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Guide";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 class="h2_style fade-in"><strong>Destinacioni</strong> in Tutto il Mondo</h2>
+<h3 class="h3_style fade-in">Scopri le migliori offerte</h3>
+
+<div class="row product-container" style="padding: 0px 15px 0px 15px;">
+    @foreach (var item in Model.ListOfProducts)
+    {
+        <div class="col-md-3 col-sm-3 col-xs-6 wow zoomIn animated" style="margin-bottom:8px; visibility: visible; animation-delay: 0.2s; animation-name: zoomIn;">
+            <div class="thumbnail product-item tour_container box fade-in" style="height:300px; box-shadow: 10px 10px 5px #aaaaaa;">
+
+                <img class="img-responsive img_container" title="Clicca per vedere piu dettagli"
+                     style="cursor:pointer;height:160px;width:100%"
+                     src="~/ProductImg/@item.ProductImage" />
+
+                <div class="caption">
+                    <h5>@Html.ActionLink(@item.ProductName, "ProductDetails", new { productId = item.ProductId })</h5>
+                    <p>@item.Price €.</p>
+                    @if (item.Quantity > 0)
+                    {
+                        using (Html.BeginForm("AddToCart", "Home", new { productId = item.ProductId, url = "Index" }, FormMethod.Post))
+                        {
+                            <button type="submit" class="pull-right"><img style="width:20px;" src="~/Images/booking-button.png" /></button>
+                        }
+                        <p>Disponibile</p>
+                    }
+                    else
+                    {
+                        <p>Non Disponibile</p>
+                    }
+                    <div class="product-item-badge">
+                        @if (item.IsFeatured == true)
+                        {
+                            <p>Nuovo</p>
+
+                        }
+                        else
+                        {
+                            <p>Non Attivo</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+<div class="container">
+    @Html.PagedListPager(Model.ListOfProducts, page => Url.Action("Guide", new { page, search = Request.QueryString["search"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayItemSliceAndTotal = true })
+</div>

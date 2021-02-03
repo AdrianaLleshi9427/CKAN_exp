@@ -1,0 +1,26 @@
+﻿@model TravelAgency.DAL.Tbl_Product
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/MyMainLayOut.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<div class="row">
+
+        <img class="img-responsive img_container"
+             style="cursor:pointer;height:500px;width:100%"
+                     src="~/ProductImg/@Model.ProductImage"/>
+
+        <div class="group">
+            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>@Model.ProductName</div>
+        </div>
+        <div class="group">
+            @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
+            <h5>@Model.Details</h5>
+        </div>
+    </div>

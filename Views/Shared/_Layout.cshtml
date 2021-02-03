@@ -1,0 +1,150 @@
+﻿@using TravelAgency.Models.Home;
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Agenzia Viaggi</title>
+    @*@Styles.Render("~/Content/css")*@
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/MyMainLayOut.css" rel="stylesheet" />
+	<link href="~/Content/footer.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="containers">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Partial("_LoginPartial")
+                <div class="nav-menus">
+                    <ul class="nav nav-pills">
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">@Html.ActionLink("HOME", "Index", "Home")</li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Guide" ? "active" : "")">@Html.ActionLink("GUIDE DI VIAGGIO", "Guide", "Home")</li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Service" ? "active" : "")">@Html.ActionLink("SERVIZI DI PRENOTAZIONE", "Service", "Home")</li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")">@Html.ActionLink("CHI SIAMO", "About", "Home")</li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")">@Html.ActionLink("CONTATTI", "Contact", "Home")</li> 
+                        @*<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Template1" ? "active" : "")">@Html.ActionLink("TEMPLATE", "Template1", "Template")</li>*@
+                        @using Microsoft.AspNet.Identity
+                        @if (Request.IsAuthenticated)
+                        {
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Dashboard" ? "active" : "")">@Html.ActionLink("DASHBOARD", "Dashboard", "Admin")</li>
+                            }
+                        }
+                        <li style="float: right;">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">    
+                                    @if (Session["cart"] != null)
+                                    {
+                                        int Total = 0;
+                                        List<Item> cart = (List<Item>)Session["cart"];
+                                        var count = cart.Count();
+                                        for (int i = 0; i < count; i++)
+                                        {
+                                            Total = Total + cart[i].Quantity;
+                                        }
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="color:white; padding-top:5px;">Cart(@Total) <b class="caret"></b></a>                                   
+                                    }
+                                    <ul class="dropdown-menu">
+                                        @if (Session["cart"] != null)
+                                        {
+                                            foreach (Item item in (List
+                                            <Item>
+                                            )Session["cart"])
+                                            {
+                                                <li>
+                                                    <a href="@Url.Action("RemoveFromCart", "Home", new { productId = item.Product.ProductId })">@item.Product.ProductName (@item.Quantity) <i class="fa fa-times"></i></a>
+                                                </li>                                            
+                                            }
+                                            <li class="divider"></li>
+                                            <li><a href="@Url.Action("Checkout", "Home")">Checkout</a></li>
+                                        }                                
+                                    </ul> 
+                                                                  
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+        <hr />
+		<!-- Footer -->
+			<footer>
+  <div id="footer" class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 footer-col">
+        <div class="logofooter"> Logo</div>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+        <p><i class="fa fa-map-pin"></i> #228, Tiruvannamalai, Tamilnadu, India</p>
+        <p><i class="fa fa-phone"></i> Phone (India) : +91 9999 999 999</p>
+        <p><i class="fa fa-envelope"></i> E-mail : info@prabuuideveloper.com</p>
+        
+      </div>
+      <div class="col-md-3 col-sm-6 footer-col">
+        <h6 class="heading7">GENERAL LINKS</h6>
+        <ul class="footer-ul">
+          <li><a href="#"> Career</a></li>
+          <li><a href="#"> Privacy Policy</a></li>
+          <li><a href="#"> Terms & Conditions</a></li>
+          <li><a href="#"> Client Gateway</a></li>
+          <li><a href="#"> Ranking</a></li>
+          <li><a href="#"> Case Studies</a></li>
+          <li><a href="#"> Frequently Ask Questions</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6 footer-col">
+        <h6 class="heading7">LATEST POST</h6>
+        <div class="post">
+          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+          <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 footer-col">
+        <h6 class="heading7">Social Media</h6>
+        <ul class="footer-social">
+          <li><i class="fa fa-linkedin social-icon linked-in" aria-hidden="true"></i></li>
+          <li><i class="fa fa-facebook social-icon facebook" aria-hidden="true"></i></li>
+          <li><i class="fa fa-twitter social-icon twitter" aria-hidden="true"></i></li>
+          <li><i class="fa fa-google-plus social-icon google" aria-hidden="true"></i></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--footer start from here-->
+
+<div class="copyright">
+  <div class="container">
+    <div class="col-md-6">
+      <p>Copyright © 2020. All right reserved SERENTECH sh.p.k</p>
+    </div>
+    <div class="col-md-6">
+      <ul class="bottom_ul">
+        <li><a href="http://192.168.1.7:1994/">universalbooksrl.com</a></li>
+        <li><a href="http://192.168.1.7:1994/Home/Guide">Guide di viaggio</a></li>
+        <li><a href="http://192.168.1.7:1994/Home/Service">Servizi di prenotazione</a></li>
+        <li><a href="http://192.168.1.7:1994/Home/About">Chi siamo</a></li>
+        <li><a href="http://192.168.1.7:1994/Home/Contact">Contatti</a></li>
+      </ul>
+    </div>
+		</footer>-->
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

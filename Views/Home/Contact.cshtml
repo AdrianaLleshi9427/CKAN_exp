@@ -1,0 +1,145 @@
+﻿@model TravelAgency.Models.ContactUsModel
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Contact Us";
+}
+
+<div class="hero-image" style="text-align: center;">
+    <img style="width: 10%;" src="../images/contact.png" class="img-fluid" />
+</div>
+<div id="content" class="container text-center contacts">
+    <h1>Get In Touch</h1>
+    <p>
+        If you have any questions or comments we'd love to hear from you. Just fill out the form below and we'll get back to soon. Rest assured that any information you provide will remain confidential.
+    </p>
+
+    <form role="form" action="/Home/Contact" method="post" style="text-align: -webkit-center;">
+
+        @* FirstName field *@
+        <div class="form-group">
+            <div class="input-group input-group-lg">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "First Name" } })
+                <i class="fa fa-asterisk form-control-feedback" aria-hidden="true"></i>
+            </div>
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.FirstName)</span>
+        </div>
+
+        @* Email field *@
+        <div class="form-group">
+            <div class="input-group input-group-lg">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address" } })
+                <i class="fa fa-asterisk form-control-feedback" aria-hidden="true"></i>
+            </div>
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Email)</span>
+        </div>
+
+        @* Subject field *@
+        <div class="form-group">
+            <div class="input-group input-group-lg">
+                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control", @placeholder = "Subject" } })
+                <i class="fa fa-asterisk form-control-feedback" aria-hidden="true"></i>
+            </div>
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Subject)</span>
+        </div>
+
+        @* Message field *@
+        <div class="form-group">
+            <div class="input-group input-group-lg">
+                @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control", @placeholder = "Message" } })
+                <i class="fa fa-asterisk form-control-feedback" aria-hidden="true"></i>
+            </div>
+            <span class="text-danger">@Html.ValidationMessageFor(model => model.Message)</span>
+        </div>
+
+        <div class="form-group">
+            <div>
+                <button type="submit" class="btn btn-primary bg-primary font13">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-mdh-6">
+        <div id="locations" class="cols-md-offset-3 text-center">
+            <h2>Our Location</h2>
+            <h5>Example Site</h5>
+            <h5>2500 Technology Dr</h5>
+            <h5>Louisville, KY 40299</h5>
+            <h5>www.examplesite.com</h5>
+            <h4>Call Us</h4>
+            <p>
+                Louisville: 555-555-5555<br />
+                San Antonio: 555-555-5555<br />
+                Toll Free: 555-555-5555<br />
+            </p>   
+        </div>
+    </div>
+</div>
+
+<script>
+    function initMap() {
+        var broadway = {
+            info:
+              '<strong>Chipotle on Broadway</strong><br>\
+    	5224 N Broadway St<br> Chicago, IL 60640<br>\
+    	<a href="https://goo.gl/maps/jKNEDz4SyyH2">Get Directions</a>',
+            lat: 41.976816,
+            long: -87.659916,
+        }
+
+        var belmont = {
+            info:
+              '<strong>Chipotle on Belmont</strong><br>\
+    	1025 W Belmont Ave<br> Chicago, IL 60657<br>\
+    	<a href="https://goo.gl/maps/PHfsWTvgKa92">Get Directions</a>',
+            lat: 41.93967,
+            long: -87.655167,
+        }
+
+        var sheridan = {
+            info:
+              '<strong>Chipotle on Sheridan</strong><br>\r\
+    	6600 N Sheridan Rd<br> Chicago, IL 60626<br>\
+    	<a href="https://goo.gl/maps/QGUrqZPsYp92">Get Directions</a>',
+            lat: 42.002707,
+            long: -87.661236,
+        }
+
+        var locations = [
+          [broadway.info, broadway.lat, broadway.long, 0],
+          [belmont.info, belmont.lat, belmont.long, 1],
+          [sheridan.info, sheridan.lat, sheridan.long, 2],
+        ]
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 13,
+            center: new google.maps.LatLng(41.976816, -87.659916),
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+        })
+
+        var infowindow = new google.maps.InfoWindow({})
+
+        var marker, i
+
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map,
+            })
+
+            google.maps.event.addListener(
+              marker,
+              'click',
+              (function (marker, i) {
+                  return function () {
+                      infowindow.setContent(locations[i][0])
+                      infowindow.open(map, marker)
+                  }
+              })(marker, i)
+            )
+        }
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXpoMKMqRdbTkqWBHWwAmbDB2avXyoPWc&callback=initMap"></script>

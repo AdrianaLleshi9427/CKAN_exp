@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Template";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="refresh" content="0;url=dist/index.html">
+    <script language="javascript">
+window.location.href = "index.html"
+    </script>
+    <script src="https://cdn.layerjs.org/libs/layerjs/layerjs-0.5.2.min.js" defer=""></script>
+    <link href="https://cdn.layerjs.org/libs/layerjs/layerjs-0.5.2.css" type="text/css" rel="stylesheet">
+    <link href="~/Content/TemplateLayOut.css" rel="stylesheet" />
+    @*@Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body lj-type="stage">
+    Go to <a href="~/wowbook/index.html">index.html</a>
+    <div class="content">
+        @*@RenderBody()*@
+        <hr />
+    </div>
+    @*@RenderSection("page01", required: false)*@
+</body>
+</html>
+
+

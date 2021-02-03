@@ -1,0 +1,249 @@
+﻿@{
+    ViewBag.Title = "page002";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+    <link href="https://cdn.layerjs.org/libs/layerjs/layerjs-0.5.2.css" type="text/css" rel="stylesheet">
+    <link href="~/Content/TemplateLayOut.css" rel="stylesheet" />
+    <script src="../Content/Turn/lib/turn.js"></script>
+    <script src="../Content/Turn/lib/turn.min.js"></script>
+    
+    
+</head>
+<body>
+    <div style="text-align: -webkit-center;">
+        <div id="flipbook" class="flipbook">
+                <div class="div_style">
+                    <div class="content">
+                        <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="img-content">
+
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="title_dimension">
+                            <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                <textarea id="title" name="title" rows="2" cols="50" class="title_input" maxlength="22" placeholder="TITOLO"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="sub_title_dimension">
+                            <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                <textarea id="sub_title" name="sub_title" rows="4" cols="50" class="sub_title_input" maxlength="23" placeholder="Sub Title"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contents" style="text-align:-webkit-center">
+                        <div class="bleedings">
+                            <div class="file-upload center contur">
+                                <div class="image-upload-wrap">
+                                    <input class="file-upload-input" type='file' onchange="readURLS(this);" accept="image/*" />
+                                    <div class="drag-text">
+                                        <h3>Drag and drop a file or select add Image</h3>
+                                    </div>
+                                </div>
+                                <div class="file-upload-content" style="height: 868.236px">
+                                    <img class="file-upload-image img_cnt" src="#" alt="your image" />
+                                    <div class="image-title-wrap">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="left_page_bleed">
+                        <div class="left_contur">
+                            <div class="img-content-left">
+                                <div class="content">
+                                    <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="section_text">
+                                        <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="title_dimension_p1">
+                                        <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                            <textarea id="title" name="title" rows="2" cols="50" class="title_input_page01" maxlength="15" placeholder="TITOLO"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="sub_title_dimension_p2">
+                                        <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                            <textarea id="sub_title" name="sub_title" rows="4" cols="50" class="sub_title_input_p1 sub_title_input" placeholder="Sub Title"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="pg1_dimension">
+                                    <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                        <textarea id="sub_title" name="sub_title" rows="20" cols="50" class="paragraph pg1" placeholder="Enter text here..."></textarea>
+                                    </div>
+                                </div>
+                                <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="image_2">
+                                    <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                        <div class="file-upload center">
+                                            <div class="image-uploader-wrap">
+                                                <input class="file-uploader-input" type='file' onchange="readURL(this);" accept="image/*" />
+                                                <div class="drag-text">
+                                                    <h3>Drag and drop a file or select add Image</h3>
+                                                </div>
+                                            </div>
+                                            <div class="file-uploader-content">
+                                                <img class="file-uploader-image image_2" src="#" alt="your image" style="width: 100%;" />
+                                                <div class="image-title-wrap">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="pg2_dimension">
+                                    <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                        <textarea id="sub_title" name="sub_title" rows="20" cols="50" class="paragraph pg2" placeholder="Enter text here..."></textarea>
+                                    </div>
+                                </div>
+                            </div>                      
+                        </div>
+                    </div>
+             </div>
+            <div class="page">
+                <div class="right_page_bleed">
+                    <div class="right_contur">
+                        <div class="img-content-right">
+                            <div class="content">
+                                <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="section_image">
+                                    <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="section_image">
+                                    <div lj-type="frame" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right" style="width: 100%">
+                                        <div class="file-upload center">
+                                            <div class="image-upload-wrap">
+                                                <input class="file-upload-input" type='file' onchange="readURLS(this);" accept="image/*" />
+                                                <div class="drag-text">
+                                                    <h3>Drag and drop a file or select add Image</h3>
+                                                </div>
+                                            </div>
+                                            <div class="file-upload-content">
+                                                <img class="file-upload-image img_cnt" src="#" alt="your image" style="width: 100%;" />
+                                                <div class="image-title-wrap">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div lj-type="layer" id="content-layer" lj-fit-to="responsive-width" lj-transition="fade" class="pg3_dimension">
+                                    <div lj-type="frame" id="main-menu" lj-transition="left" lj-fit-to="responsive-height" lj-start-position="top-right">
+                                        <textarea id="sub_title" name="sub_title" rows="20" cols="50" class="paragraph pg3" placeholder="Enter text here..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div>
+                 
+            </div>
+            <div>  </div>
+            <div class="hard"></div>
+            <div class="hard"></div>
+            <div>
+                <button onclick="getPDF()">Generate PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("#flipbook").turn({    
+            height: 900,
+
+        });
+        function readURLS(input) {
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.image-upload-wrap').hide();
+
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+
+                    $('.image-title').html(input.files[0].name);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+            }
+        }
+        function readURL(item) {
+            if (item.files && item.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.image-uploader-wrap').hide();
+
+                    $('.file-uploader-image').attr('src', e.target.result);
+                    $('.file-uploader-content').show();
+
+                    $('.image-title').html(item.files[0].name);
+                };
+
+                reader.readAsDataURL(item.files[0]);
+
+            }
+        }
+
+        function getPDF() {
+
+            var HTML_Width = $(".flipbook").width();
+            var HTML_Height = $(".flipbook").height();
+            var top_left_margin = 15;
+            var PDF_Width = HTML_Width + (top_left_margin * 2);
+            var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+            var canvas_image_width = HTML_Width;
+            var canvas_image_height = HTML_Height;
+
+            var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+
+            html2canvas($(".flipbook")[0], { allowTaint: true }).then(function (canvas) {
+                canvas.getContext('2d');
+
+                console.log(canvas.height + "  " + canvas.width);
+
+
+                var imgData = canvas.toDataURL("image/jpeg", 1.0);
+                var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+                pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+
+
+                for (var i = 1; i <= totalPDFPages; i++) {
+                    pdf.addPage(PDF_Width, PDF_Height);
+                    pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
+                }
+
+                pdf.save("HTML-Document.pdf");
+            });
+        };
+    </script>
+    
+</body>
+</html>

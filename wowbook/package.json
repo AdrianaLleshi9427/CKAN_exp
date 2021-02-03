@@ -1,0 +1,19 @@
+{
+  "name": "wowbook",
+  "version": "1.0.0",
+  "description": "wowbook =======",
+  "main": "wow_book.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yapro/wowbook.git"
+  },
+  "author": "Adriana Lleshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yapro/wowbook/issues"
+  },
+  "homepage": "https://github.com/yapro/wowbook#readme"
+}
